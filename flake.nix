@@ -9,9 +9,10 @@
 
   outputs = inputs@{ self, nix-darwin, nixpkgs }:
   let
-    configuration = { pkgs,programs, ... }: {
+    configuration = { pkgs, ... }: {
       # List packages installed in system profile. To search by name, run:
       # $ nix-env -qaP | grep wget
+      nixpkgs.config.allowUnfree = true;
       environment.systemPackages =
         [ pkgs.vim
           pkgs.neovim
@@ -21,13 +22,23 @@
           pkgs.wget
           pkgs.zig
           pkgs.nmap
-          # pkgs.ipython  not available
           pkgs.bat
           pkgs.docker
           pkgs.python3
           pkgs.go
           pkgs.cargo
           pkgs.rustc
+          pkgs.obsidian
+          pkgs.anki-bin
+          pkgs.karabiner-elements
+          pkgs.rectangle
+          pkgs.git
+          # temporary broken or disabled  
+
+          # pkgs.ipython
+          # pkgs.ghostty
+          # pkgs.keepassxc
+          # pkgs.syncthing
         ];
       # Necessary for using flakes on this system.
       nix.settings.experimental-features = "nix-command flakes";
@@ -47,7 +58,7 @@
   in
   {
     # Build darwin flake using:
-    # $ darwin-rebuild build --flake .#simple
+    # $ darwin-rebkarabiner-elementsuild build --flake .#simple
     darwinConfigurations."incubo" = nix-darwin.lib.darwinSystem {
       modules = [ configuration ];
     };
