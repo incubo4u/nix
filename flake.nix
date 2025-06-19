@@ -14,7 +14,11 @@
       # $ nix-env -qaP | grep wget
       nixpkgs.config.allowUnfree = true;
       environment.systemPackages =
-        [ pkgs.vim
+
+        [
+          pkgs.zsh
+          pkgs.carapace
+          pkgs.vim
           pkgs.neovim
           pkgs.ripgrep
           pkgs.tmux
