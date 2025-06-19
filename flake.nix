@@ -1,5 +1,5 @@
 {
-  description = "darwin_intel";
+  description = "setups";
 
   inputs = {
     nixpkgs.url = "github:NixOS/nixpkgs/nixpkgs-unstable";
@@ -7,64 +7,85 @@
     nix-darwin.inputs.nixpkgs.follows = "nixpkgs";
   };
 
-  outputs = inputs@{ self, nix-darwin, nixpkgs }:
-  let
-    configuration = { pkgs, ... }: {
-      # List packages installed in system profile. To search by name, run:
-      # $ nix-env -qaP | grep wget
-      nixpkgs.config.allowUnfree = true;
-      environment.systemPackages =
+  outputs = inputs @ {
+    self,
+    nix-darwin,
+    nixpkgs,
+  }: let
+    configuration = {pkgs, ...}: let
+      editors = with pkgs; [
+        neovim
+        vim
+      ];
 
-        [
-          pkgs.zsh
-          pkgs.carapace
-          pkgs.vim
-          pkgs.neovim
-          pkgs.ripgrep
-          pkgs.tmux
-          pkgs.tree
-          pkgs.wget
-          pkgs.zig
-          pkgs.nmap
-          pkgs.bat
-          pkgs.docker
-          pkgs.python3
-          pkgs.go
-          pkgs.cargo
-          pkgs.rustc
-          pkgs.obsidian
-          pkgs.anki-bin
-          pkgs.karabiner-elements
-          pkgs.rectangle
-          pkgs.git
-          # temporary broken or disabled  
+      languages = with pkgs; [
+        cargo
+        go
+        lua
+        python3
+        rustc
+        zig
+      ];
+      networkingTools = with pkgs; [
+        curl
+        nmap
+        wget
+        wireshark
+      ];
 
-          # pkgs.ipython
-          # pkgs.ghostty
-          # pkgs.keepassxc
-          # pkgs.syncthing
-        ];
-      # Necessary for using flakes on this system.
+      macOsUtils = with pkgs; [
+        rectangle
+      ];
+
+      systemUtilities = with pkgs; [
+        atuin
+        bat
+        carapace
+        git
+        ripgrep
+        tmux
+        tree
+        zsh
+      ];
+
+      guiApplications = with pkgs; [
+        anki-bin
+        docker
+        karabiner-elements
+        obsidian
+      ];
+      broken = with pkgs; [
+        ghostty
+        ipython
+        keepassxc
+        syncthing
+      ];
+    in {
+      nix.gc.automatic = true;
+      nix.gc.options = "--delete-older-than 7d";
+      nix.optimise.automatic = true;
       nix.settings.experimental-features = "nix-command flakes";
-      # Enable alternative shell support in nix-darwin.
-      # programs.fish.enable = true;
+      nixpkgs.config.allowUnfree = true;
+      nixpkgs.hostPlatform = "x86_64-darwin";
       programs.zsh.enable = true;
-
-      # Set Git commit hash for darwin-version.
       system.configurationRevision = self.rev or self.dirtyRev or null;
-      # Used for backwards compatibility, please read the changelog before changing.
-      # $ darwin-rebuild changelog
       system.stateVersion = 6;
 
-      # The platform the configuration will be used on.
-      nixpkgs.hostPlatform = "x86_64-darwin";
+      # Special handling for GUI applications or servises
+      environment.systemPackages = builtins.concatLists [
+        guiApplications
+        macOsUtils
+        systemUtilities
+        networkingTools
+        languages
+        editors
+        #broken
+      ];
     };
-  in
-  {
+  in {
     # Build darwin flake using:
-    # $ darwin-rebkarabiner-elementsuild build --flake .#simple
     darwinConfigurations."incubo" = nix-darwin.lib.darwinSystem {
-      modules = [ configuration ];
+      modules = [configuration];
     };
   };
 }
