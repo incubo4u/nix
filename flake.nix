@@ -21,9 +21,9 @@
       config.allowUnfree = true;
     };
 
-    packages = import ./packages.nix { inherit pkgs; };
+    packages = import ./packages.nix {inherit pkgs;};
 
-    darwinConfig = { ... }: {
+    darwinConfig = {...}: {
       nix.gc.automatic = true;
       nix.gc.options = "--delete-older-than 7d";
       nix.optimise.automatic = true;
@@ -31,8 +31,11 @@
       nixpkgs.hostPlatform = system;
       system.configurationRevision = self.rev or self.dirtyRev or null;
       system.stateVersion = 6;
-
-      environment.shells = with pkgs; [ zsh ];
+      users.users.mikolajkozakiewicz = {
+        name = "mikolajkozakiewicz";
+        home = "/Users/mikolajkozakiewicz";
+      };
+      environment.shells = with pkgs; [zsh];
       programs.zsh.enable = true;
 
       environment.systemPackages = builtins.concatLists [
@@ -40,18 +43,18 @@
         packages.guiApplications
       ];
 
-      imports = [ home-manager.darwinModules.home-manager ];
-
+      imports = [home-manager.darwinModules.home-manager];
+      home-manager.backupFileExtension = "backup";
       home-manager.useGlobalPkgs = true;
       home-manager.useUserPackages = true;
-     home-manager.users.mikolajkozakiewicz = import ./home.nix {
-        inherit pkgs; 
+      home-manager.users.mikolajkozakiewicz = import ./home.nix {
+        inherit pkgs;
       };
     };
   in {
     darwinConfigurations."incubo" = nix-darwin.lib.darwinSystem {
       system = system;
-      modules = [ darwinConfig ];
+      modules = [darwinConfig];
     };
   };
 }
