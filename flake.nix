@@ -70,8 +70,19 @@
       programs.zsh.enable = true;
       system.configurationRevision = self.rev or self.dirtyRev or null;
       system.stateVersion = 6;
-
-      # Special handling for GUI applications or servises
+      environment.shells = with pkgs; [ zsh ];
+      environment.shellAliases = {
+        ll="ls -al";
+        "cd.."="cd ..";
+        ".."="cd ..";
+        "..."="cd ../../";
+        gs="git status";
+        gp="git pull";
+        gd="git diff";
+        gds="git diff --staged";
+        gt="git log --graph --oneline --decorate";
+        ndr="darwin-rebuild switch --flake";
+       };
       environment.systemPackages = builtins.concatLists [
         guiApplications
         macOsUtils
