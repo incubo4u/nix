@@ -2,7 +2,7 @@
 { pkgs }:
 {
 
-  editors = with pkgs; [ neovim vim ];
+  editors = with pkgs; [neovim vim ];
 
   languages = with pkgs; [ cargo go lua python3 rustc zig ];
 
@@ -19,6 +19,9 @@
     tmux
     tree
     zsh
+    fzf
+    oh-my-zsh
+
   ];
 
   guiApplications = with pkgs; [
