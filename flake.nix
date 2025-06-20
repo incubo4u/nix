@@ -5,98 +5,53 @@
     nixpkgs.url = "github:NixOS/nixpkgs/nixpkgs-unstable";
     nix-darwin.url = "github:nix-darwin/nix-darwin/master";
     nix-darwin.inputs.nixpkgs.follows = "nixpkgs";
+    home-manager.url = "github:nix-community/home-manager";
+    home-manager.inputs.nixpkgs.follows = "nixpkgs";
   };
 
   outputs = inputs @ {
     self,
-    nix-darwin,
     nixpkgs,
+    nix-darwin,
+    home-manager,
   }: let
-    configuration = {pkgs, ...}: let
-      editors = with pkgs; [
-        neovim
-        vim
-      ];
+    system = "x86_64-darwin";
+    pkgs = import nixpkgs {
+      inherit system;
+      config.allowUnfree = true;
+    };
 
-      languages = with pkgs; [
-        cargo
-        go
-        lua
-        python3
-        rustc
-        zig
-      ];
-      networkingTools = with pkgs; [
-        curl
-        nmap
-        wget
-        wireshark
-      ];
+    packages = import ./packages.nix { inherit pkgs; };
 
-      macOsUtils = with pkgs; [
-        rectangle
-      ];
-
-      systemUtilities = with pkgs; [
-        atuin
-        bat
-        carapace
-        git
-        ripgrep
-        tmux
-        tree
-        zsh
-      ];
-
-      guiApplications = with pkgs; [
-        anki-bin
-        docker
-        karabiner-elements
-        obsidian
-      ];
-      broken = with pkgs; [
-        ghostty
-        ipython
-        keepassxc
-        syncthing
-      ];
-    in {
+    darwinConfig = { ... }: {
       nix.gc.automatic = true;
       nix.gc.options = "--delete-older-than 7d";
       nix.optimise.automatic = true;
       nix.settings.experimental-features = "nix-command flakes";
-      nixpkgs.config.allowUnfree = true;
-      nixpkgs.hostPlatform = "x86_64-darwin";
-      programs.zsh.enable = true;
+      nixpkgs.hostPlatform = system;
       system.configurationRevision = self.rev or self.dirtyRev or null;
       system.stateVersion = 6;
+
       environment.shells = with pkgs; [ zsh ];
-      environment.shellAliases = {
-        ll="ls -al";
-        "cd.."="cd ..";
-        ".."="cd ..";
-        "..."="cd ../../";
-        gs="git status";
-        gp="git pull";
-        gd="git diff";
-        gds="git diff --staged";
-        gt="git log --graph --oneline --decorate";
-        ndr="darwin-rebuild switch --flake";
-       };
+      programs.zsh.enable = true;
+
       environment.systemPackages = builtins.concatLists [
-        guiApplications
-        macOsUtils
-        systemUtilities
-        networkingTools
-        languages
-        editors
-        #broken
+        packages.macOsUtils
+        packages.guiApplications
       ];
+
+      imports = [ home-manager.darwinModules.home-manager ];
+
+      home-manager.useGlobalPkgs = true;
+      home-manager.useUserPackages = true;
+     home-manager.users.mikolajkozakiewicz = import ./home.nix {
+        inherit pkgs; 
+      };
     };
   in {
-    # Build darwin flake using:
     darwinConfigurations."incubo" = nix-darwin.lib.darwinSystem {
-      modules = [configuration];
+      system = system;
+      modules = [ darwinConfig ];
     };
   };
 }
