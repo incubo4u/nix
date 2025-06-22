@@ -4,10 +4,20 @@ in {
   home.username = "mikolajkozakiewicz";
   home.homeDirectory = "/Users/mikolajkozakiewicz";
   home.stateVersion = "25.05";
+  home.sessionVariables = {
+    LANG = "en_US.UTF-8";
+    EDITOR = "nvim";
+    COMPLETION_WAITING_DOTS = "true";
+    HIST_STAMPS = "mm/dd/yyyy";
+    CARAPACE_BRIDGES = "zsh,bash";
+  };
+  home.shell.enableZshIntegration = true;
+
   programs.home-manager.enable = true;
+  programs.git.enable = true;
+  programs.tmux.enable = true;
   programs.zsh = {
     enable = true;
-
     oh-my-zsh = {
       enable = true;
       theme = "robbyrussell";
@@ -35,26 +45,15 @@ in {
     enable = true;
     enableZshIntegration = true;
   };
-
   programs.atuin = {
     enable = true;
     enableZshIntegration = true;
     flags = ["--disable-up-arrow"];
   };
-  programs.git.enable = true;
-  programs.tmux.enable = true;
   programs.fzf = {
     enable = true;
     enableZshIntegration = true;
   };
-  home.sessionVariables = {
-    LANG = "en_US.UTF-8";
-    EDITOR = "nvim";
-    COMPLETION_WAITING_DOTS = "true";
-    HIST_STAMPS = "mm/dd/yyyy";
-    CARAPACE_BRIDGES = "zsh,bash";
-  };
-  home.shell.enableZshIntegration = true;
   home.packages = builtins.concatLists [
     packages.systemUtilities
     packages.editors

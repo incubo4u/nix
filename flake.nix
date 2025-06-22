@@ -22,7 +22,7 @@
     };
 
     packages = import ./packages.nix {inherit pkgs;};
-
+    
     darwinConfig = {...}: {
       nix.gc.automatic = true;
       nix.gc.options = "--delete-older-than 7d";
@@ -42,8 +42,7 @@
         packages.macOsUtils
         packages.guiApplications
       ];
-
-      imports = [home-manager.darwinModules.home-manager];
+      imports = [./macos.nix home-manager.darwinModules.home-manager];
       home-manager.backupFileExtension = "backup";
       home-manager.useGlobalPkgs = true;
       home-manager.useUserPackages = true;
