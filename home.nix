@@ -12,11 +12,10 @@ in {
     CARAPACE_BRIDGES = "zsh,bash";
   };
   home.shell.enableZshIntegration = true;
-
   programs.home-manager.enable = true;
   programs.git.enable = true;
- programs.tmux = {
-    enable = true; 
+  programs.tmux = {
+    enable = true;
     mouse = true;
     prefix = "C-a";
     keyMode = "vi";
@@ -24,7 +23,7 @@ in {
     extraConfig = ''
       bind Space split-window -h
       bind Enter split-window -v
-      unbind '"' 
+      unbind '"'
       unbind %
       bind s select-pane -t :.+
 
@@ -91,10 +90,9 @@ in {
     enable = true;
     enableZshIntegration = true;
   };
-   imports = [
+  imports = [
     ./mac-defaults.nix
   ];
-
   home.packages = builtins.concatLists [
     packages.systemUtilities
     packages.editors

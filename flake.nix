@@ -22,7 +22,7 @@
     };
 
     packages = import ./packages.nix {inherit pkgs;};
-    
+
     darwinConfig = {...}: {
       nix.gc.automatic = true;
       nix.gc.options = "--delete-older-than 7d";
