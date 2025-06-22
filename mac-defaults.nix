@@ -1,5 +1,5 @@
 {config, ...}: {
-  programs.darwin.defaults = {
+  targets.darwin.defaults = {
     "com.apple.dock" = {
       orientation = "bottom";
       tilesize = 36;
