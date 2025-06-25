@@ -12,9 +12,8 @@
       "notunes"
       "ghostty"
       "keepassxc"
-      "ncspot"
-      "ipython"
       "syncthing"
+      "google-chrome"
     ];
     masApps = {
       "Slack" = 803453959;
