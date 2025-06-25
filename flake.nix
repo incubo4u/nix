@@ -42,7 +42,6 @@
         packages.macOsUtils
         packages.guiApplications
       ];
-
       imports = [home-manager.darwinModules.home-manager];
       home-manager.backupFileExtension = "backup";
       home-manager.useGlobalPkgs = true;
