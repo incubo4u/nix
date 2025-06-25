@@ -24,6 +24,7 @@
     packages = import ./packages.nix {inherit pkgs;};
 
     darwinConfig = {...}: {
+      system.primaryUser = "mikolajkozakiewicz";
       nix.gc.automatic = true;
       nix.gc.options = "--delete-older-than 7d";
       nix.optimise.automatic = true;
@@ -42,7 +43,9 @@
         packages.macOsUtils
         packages.guiApplications
       ];
-      imports = [home-manager.darwinModules.home-manager];
+      imports = [
+          ./homebrew.nix
+          home-manager.darwinModules.home-manager];
       home-manager.backupFileExtension = "backup";
       home-manager.useGlobalPkgs = true;
       home-manager.useUserPackages = true;
