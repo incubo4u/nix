@@ -13,7 +13,15 @@ in {
   };
   home.shell.enableZshIntegration = true;
   programs.home-manager.enable = true;
-  programs.git.enable = true;
+  programs.git = {
+    enable = true;
+    extraConfig = {
+      core.pager = "delta";
+      interactive.diffFilter = "delta --color-only";
+      delta.navigate = true;
+      merge.conflictStyle = "zdiff3";
+    };
+  };
   programs.tmux = {
     enable = true;
     mouse = true;

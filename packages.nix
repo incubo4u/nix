@@ -16,6 +16,7 @@
     zsh
     fzf
     oh-my-zsh
+    delta
   ];
   guiApplications = with pkgs; [
     anki-bin
