@@ -21,13 +21,25 @@
       ShowHardDrivesOnDesktop = false;
       ShowRemovableMediaOnDesktop = true;
       FXICloudDriveEnabled = false;
+      CreateDesktop = true;
+      AppleInterfaceStyle = "Dark";
+      FXPreferredViewStyle = "clmv";
     };
     NSGlobalDomain = {
       KeyRepeat = 2;
       InitialKeyRepeat = 15;
       AppleShowScrollBars = "Always";
-      # _HIHideMenuBar = true;
+      NSAutomaticCapitalizationEnabled = false;
+      NSAutomaticDashSubstitutionEnabled = false;
+      NSAutomaticPeriodSubstitutionEnabled = false;
+      NSAutomaticQuoteSubstitutionEnabled = false;
+      NSAutomaticSpellingCorrectionEnabled = false;
+      NSDocumentSaveNewDocumentsToCloud = false;
+      NSWindowResizeTime = 0.0;
+      SoftwareUpdate.AutomaticallyInstallMacOSUpdates = true;
+      _HIHideMenuBar = true;
     };
+    "com.apple.AdLib" = {allowApplePersonalizedAdvertising = false;};
     "com.apple.screencapture" = {
       location = "${config.home.homeDirectory}/Desktop";
     };
@@ -38,5 +50,6 @@
     "com.apple.LaunchServices" = {
       LSQuarantine = false;
     };
+    trackpad.Clicking = true;
   };
 }
