@@ -2,28 +2,27 @@
 {...}:
 
 {
-  services.homebrew = {
+  homebrew = {
     enable = true;
-    autoMigrate = true;
     taps = [];
     brews = [];
     casks = [
       "arc"
       "homerow"
       "notunes"
+      "ghostty"
+      "keepassxc"
+      "ncspot"
+      "ipython"
+      "syncthing"
     ];
     masApps = {
       "Slack" = 803453959;
     };
     onActivation = {
-      enable = true;
       autoUpdate = true;
       upgrade = true;
-      cleanup = true;
-    };
-    cleanup = {
-      enable = true;
-      periodic = true;
+      cleanup = "none"; #"zap";
     };
   };
 }
