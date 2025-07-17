@@ -1,8 +1,8 @@
 {pkgs, ...}: let
   packages = import ./packages.nix {inherit pkgs;};
 in {
-  home.username = "mikolajkozakiewicz";
-  home.homeDirectory = "/Users/mikolajkozakiewicz";
+  home.username = "mikolaj";
+  home.homeDirectory = "/Users/mikolaj";
   home.stateVersion = "25.05";
   home.sessionVariables = {
     LANG = "en_US.UTF-8";

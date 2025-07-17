@@ -16,7 +16,6 @@
       "google-chrome"
     ];
     masApps = {
-      "Slack" = 803453959;
     };
     onActivation = {
       autoUpdate = true;
