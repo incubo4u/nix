@@ -1,8 +1,8 @@
 {pkgs, ...}: let
   packages = import ./packages.nix {inherit pkgs;};
 in {
-  home.username = "mikolajkozakiewicz";
-  home.homeDirectory = "/Users/mikolajkozakiewicz";
+  home.username = "mikolaj";
+  home.homeDirectory = "/Users/mikolaj";
   home.stateVersion = "25.05";
   home.sessionVariables = {
     LANG = "en_US.UTF-8";
@@ -20,6 +20,16 @@ in {
       interactive.diffFilter = "delta --color-only";
       delta.navigate = true;
       merge.conflictStyle = "zdiff3";
+    };
+  };
+  programs.starship = {
+    enable = true;
+    settings = {
+      # add_newline = false;
+      # character = {
+      #   success_symbol = "[➜](bold green)";
+      #   error_symbol = "[➜](bold red)";
+      # };
     };
   };
   programs.tmux = {
