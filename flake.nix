@@ -49,7 +49,7 @@
       home-manager.backupFileExtension = "backup";
       home-manager.useGlobalPkgs = true;
       home-manager.useUserPackages = true;
-      home-manager.users.mikolajkozakiewicz = import ./home.nix {
+      home-manager.users.mikolaj = import ./home.nix {
         inherit pkgs;
       };
     };
