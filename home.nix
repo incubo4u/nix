@@ -22,14 +22,45 @@ in {
       merge.conflictStyle = "zdiff3";
     };
   };
+  programs.aerospace = {
+    enable = true;
+    userSettings = {
+      # gaps = {
+      #   outer.left = 8;
+      #   outer.bottom = 8;
+      #   outer.top = 8;
+      #   outer.right = 8;
+      # };
+
+      mode.main.binding = {
+
+        alt-h = "focus left";
+        alt-j = "focus down";
+        alt-k = "focus up";
+        alt-l = "focus right";
+
+        alt-a = "workspace A";
+        alt-s = "workspace S";
+        alt-d = "workspace D";
+        alt-f = "workspace F";
+        alt-g = "workspace G";
+
+        alt-shift-a = "move-node-to-workspace A";
+        alt-shift-s = "move-node-to-workspace S";
+        alt-shift-d = "move-node-to-workspace D";
+        alt-shift-f = "move-node-to-workspace F";
+        alt-shift-g = "move-node-to-workspace G";
+
+        alt-tab = "workspace-back-and-forth";
+
+        alt-minus = "resize smart -50";
+        alt-equal = "resize smart +50";
+      };
+    };
+  };
   programs.starship = {
     enable = true;
     settings = {
-      # add_newline = false;
-      # character = {
-      #   success_symbol = "[➜](bold green)";
-      #   error_symbol = "[➜](bold red)";
-      # };
     };
   };
   programs.tmux = {
