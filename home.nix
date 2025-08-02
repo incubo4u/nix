@@ -9,7 +9,6 @@ in {
     EDITOR = "nvim";
     COMPLETION_WAITING_DOTS = "true";
     HIST_STAMPS = "mm/dd/yyyy";
-    CARAPACE_BRIDGES = "zsh,bash";
   };
   home.shell.enableZshIntegration = true;
   programs.home-manager.enable = true;
@@ -121,6 +120,7 @@ in {
       nixrb = "sudo darwin-rebuild switch --flake .#incubo";
     };
     initExtra = ''
+      set -o vi
       if [[ -n "$SSH_CONNECTION" ]]; then
         export EDITOR='vim'
       fi
