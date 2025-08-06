@@ -17,6 +17,8 @@
     fzf
     oh-my-zsh
     delta
+    colima
+    lazydocker
   ];
   guiApplications = with pkgs; [
     anki-bin
