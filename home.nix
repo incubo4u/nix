@@ -1,15 +1,14 @@
 {pkgs, ...}: let
   packages = import ./packages.nix {inherit pkgs;};
 in {
-  home.username = "mikolajkozakiewicz";
-  home.homeDirectory = "/Users/mikolajkozakiewicz";
+  home.username = "mikolaj";
+  home.homeDirectory = "/Users/mikolaj";
   home.stateVersion = "25.05";
   home.sessionVariables = {
     LANG = "en_US.UTF-8";
     EDITOR = "nvim";
     COMPLETION_WAITING_DOTS = "true";
     HIST_STAMPS = "mm/dd/yyyy";
-    CARAPACE_BRIDGES = "zsh,bash";
   };
   home.shell.enableZshIntegration = true;
   programs.home-manager.enable = true;
@@ -20,6 +19,47 @@ in {
       interactive.diffFilter = "delta --color-only";
       delta.navigate = true;
       merge.conflictStyle = "zdiff3";
+    };
+  };
+  programs.aerospace = {
+    enable = true;
+    userSettings = {
+      # gaps = {
+      #   outer.left = 8;
+      #   outer.bottom = 8;
+      #   outer.top = 8;
+      #   outer.right = 8;
+      # };
+
+      mode.main.binding = {
+
+        alt-h = "focus left";
+        alt-j = "focus down";
+        alt-k = "focus up";
+        alt-l = "focus right";
+
+        alt-a = "workspace A";
+        alt-s = "workspace S";
+        alt-d = "workspace D";
+        alt-f = "workspace F";
+        alt-g = "workspace G";
+
+        alt-shift-a = "move-node-to-workspace A";
+        alt-shift-s = "move-node-to-workspace S";
+        alt-shift-d = "move-node-to-workspace D";
+        alt-shift-f = "move-node-to-workspace F";
+        alt-shift-g = "move-node-to-workspace G";
+
+        alt-tab = "workspace-back-and-forth";
+
+        alt-minus = "resize smart -50";
+        alt-equal = "resize smart +50";
+      };
+    };
+  };
+  programs.starship = {
+    enable = true;
+    settings = {
     };
   };
   programs.tmux = {
@@ -80,6 +120,7 @@ in {
       nixrb = "sudo darwin-rebuild switch --flake .#incubo";
     };
     initExtra = ''
+      set -o vi
       if [[ -n "$SSH_CONNECTION" ]]; then
         export EDITOR='vim'
       fi

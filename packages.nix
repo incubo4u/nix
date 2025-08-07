@@ -6,9 +6,9 @@
   networkingTools = with pkgs; [ curl nmap wget wireshark ];
   macOsUtils = with pkgs; [ rectangle ];
   systemUtilities = with pkgs; [
+    starship
     atuin
     bat
-    carapace
     git
     ripgrep
     tmux
@@ -17,6 +17,8 @@
     fzf
     oh-my-zsh
     delta
+    colima
+    lazydocker
   ];
   guiApplications = with pkgs; [
     anki-bin
