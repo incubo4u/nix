@@ -10,6 +10,11 @@
       "show-process-indicators" = true;
       "show-recents" = false;
     };
+    #disable apple inteligence 
+    "com.apple.CloudSubscriptionFeatures.optIn" = {
+      "545129924" = "false";
+    };
+
     "com.apple.finder" = {
       AppleShowAllFiles = true;
       ShowPathbar = true;
