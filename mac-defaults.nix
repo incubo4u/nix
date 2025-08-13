@@ -1,39 +1,45 @@
 {config, ...}: {
   targets.darwin.defaults = {
     "com.apple.dock" = {
+      "autohide-delay" = 0.0;
+      show-recents = false;
+      static-only = true;
+      autohide = true;
+      launchanim = false;
       orientation = "bottom";
       tilesize = 36;
-      autohide = true;
-      "autohide-delay" = 0.0;
-      launchanim = false;
-      "static-only" = true;
-      "show-process-indicators" = true;
-      "show-recents" = false;
+      persistent-apps = [
+        "/Applications/Arc.app"
+        "/Applications/Signal.app"
+        "/Applications/Ghostty.app"
+      ];
     };
-    #disable apple inteligence 
+    #disable apple inteligence
     "com.apple.CloudSubscriptionFeatures.optIn" = {
       "545129924" = "false";
     };
 
-    "com.apple.finder" = {
+    finder = {
+      AppleShowAllExtensions = true;
       AppleShowAllFiles = true;
+      CreateDesktop = false;
+      FXEnableExtensionChangeWarning = false;
+      FXPreferredViewStyle = "Nlsv";
+      NewWindowTarget = "Home";
+      ShowExternalHardDrivesOnDesktop = false;
+      ShowHardDrivesOnDesktop = false;
+      ShowMountedServersOnDesktop = false;
+      ShowRemovableMediaOnDesktop = false;
       ShowPathbar = true;
       ShowStatusBar = true;
-      _FXShowPosixPathInTitle = true; # Show full POSIX path in Finder window title
-      FXEnableExtensionChangeWarning = false; # Disable warning when changing file extensions
-      FXArrangeGroupViewBy = "Name";
-      ShowExternalHardDrivesOnDesktop = true;
-      ShowHardDrivesOnDesktop = false;
-      ShowRemovableMediaOnDesktop = true;
-      FXICloudDriveEnabled = false;
-      CreateDesktop = true;
-      AppleInterfaceStyle = "Dark";
-      FXPreferredViewStyle = "clmv";
+      _FXShowPosixPathInTitle = true;
+      _FXSortFoldersFirst = true;
     };
+
     NSGlobalDomain = {
-      KeyRepeat = 2;
+      AppleInterfaceStyle = "Dark";
       InitialKeyRepeat = 15;
-      AppleShowScrollBars = "Always";
+      KeyRepeat = 2;
       NSAutomaticCapitalizationEnabled = false;
       NSAutomaticDashSubstitutionEnabled = false;
       NSAutomaticPeriodSubstitutionEnabled = false;
