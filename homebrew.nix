@@ -1,7 +1,4 @@
-
-{...}:
-
-{
+{...}: {
   homebrew = {
     enable = true;
     taps = [];
@@ -20,7 +17,7 @@
     onActivation = {
       autoUpdate = true;
       upgrade = true;
-      cleanup = "none"; #"zap";
+      cleanup = "zap";
     };
   };
 }

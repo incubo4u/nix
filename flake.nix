@@ -44,8 +44,9 @@
         packages.guiApplications
       ];
       imports = [
-          ./homebrew.nix
-          home-manager.darwinModules.home-manager];
+        ./homebrew.nix
+        home-manager.darwinModules.home-manager
+      ];
       home-manager.backupFileExtension = "backup";
       home-manager.useGlobalPkgs = true;
       home-manager.useUserPackages = true;
