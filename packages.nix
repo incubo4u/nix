@@ -1,10 +1,8 @@
-
-{ pkgs }:
-{
-  editors = with pkgs; [neovim vim ];
-  languages = with pkgs; [ cargo go lua python3 rustc zig ];
-  networkingTools = with pkgs; [ curl nmap wget wireshark ];
-  macOsUtils = with pkgs; [ rectangle ];
+{pkgs}: {
+  editors = with pkgs; [neovim vim];
+  languages = with pkgs; [cargo go lua python3 rustc zig];
+  networkingTools = with pkgs; [curl nmap wget wireshark];
+  macOsUtils = with pkgs; [rectangle];
   systemUtilities = with pkgs; [
     starship
     atuin

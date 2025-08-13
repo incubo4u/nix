@@ -32,7 +32,6 @@ in {
       # };
 
       mode.main.binding = {
-
         alt-h = "focus left";
         alt-j = "focus down";
         alt-k = "focus up";
@@ -118,6 +117,7 @@ in {
       gds = "git diff --staged";
       gt = "git log --graph --oneline --decorate";
       nixrb = "sudo darwin-rebuild switch --flake .#incubo";
+      update = "nix flake update --flake .#incubo && brew update";
     };
     initExtra = ''
       set -o vi
