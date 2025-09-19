@@ -1,18 +1,18 @@
 {config, ...}: {
   targets.darwin.defaults = {
     "com.apple.dock" = {
-      "autohide-delay" = 0.0;
+      autohide-delay = 0.0;
       show-recents = false;
       static-only = true;
       autohide = true;
       launchanim = false;
       orientation = "bottom";
       tilesize = 36;
-      persistent-apps = [
-        "/Applications/Arc.app"
-        "/Applications/Signal.app"
-        "/Applications/Ghostty.app"
-      ];
+      # persistent-apps = [
+      #   "/Applications/Arc.app"
+      #   "/Applications/Signal.app"
+      #   "/Applications/Ghostty.app"
+      # ];
     };
     #disable apple inteligence
     "com.apple.CloudSubscriptionFeatures.optIn" = {

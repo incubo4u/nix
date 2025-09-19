@@ -1,6 +1,6 @@
 {pkgs}: {
   editors = with pkgs; [neovim vim];
-  languages = with pkgs; [rustup go lua python3 zig];
+  languages = with pkgs; [rustup rustc go lua python3 zig];
   networkingTools = with pkgs; [curl nmap wget wireshark];
   macOsUtils = with pkgs; [rectangle];
   systemUtilities = with pkgs; [
