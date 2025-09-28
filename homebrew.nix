@@ -5,7 +5,7 @@
     brews = [];
     casks = [
       "arc"
-      "feedflow"
+      "NetNewsWire"
       "ghostty"
       "google-chrome"
       "homerow"
