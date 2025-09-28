@@ -1,6 +1,12 @@
 {pkgs}: {
   editors = with pkgs; [neovim vim];
-  languages = with pkgs; [rustup rustc go lua python3 zig];
+  languages = with pkgs; [rustup rustc go lua  zig 
+    (python3.withPackages (pypkgs: [
+      pypkgs.beancount
+      # pypkgs.fava
+      pypkgs.ipython
+    ]))
+  ];
   networkingTools = with pkgs; [curl nmap wget wireshark];
   macOsUtils = with pkgs; [rectangle];
   systemUtilities = with pkgs; [
@@ -26,7 +32,6 @@
   ];
   broken = with pkgs; [
     ghostty
-    ipython
     keepassxc
     syncthing
   ];

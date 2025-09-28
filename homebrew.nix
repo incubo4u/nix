@@ -5,12 +5,13 @@
     brews = [];
     casks = [
       "arc"
-      "homerow"
-      "notunes"
+      "feedflow"
       "ghostty"
-      "keepassxc"
-      "syncthing"
       "google-chrome"
+      "homerow"
+      "keepassxc"
+      "notunes"
+      "syncthing"
     ];
     masApps = {
     };
