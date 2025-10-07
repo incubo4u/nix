@@ -1,14 +1,13 @@
 {pkgs}: {
   editors = with pkgs; [neovim vim];
-  languages = with pkgs; [rustup rustc go lua  zig 
+  languages = with pkgs; [rustup rustc go lua zig 
     (python3.withPackages (pypkgs: [
       pypkgs.beancount
-      # pypkgs.fava
       pypkgs.ipython
     ]))
   ];
-  networkingTools = with pkgs; [curl nmap wget wireshark];
-  macOsUtils = with pkgs; [rectangle];
+  networkingTools = with pkgs; [curl nmap wget];
+  macOsUtils = with pkgs; [];
   systemUtilities = with pkgs; [
     starship
     atuin
@@ -27,7 +26,6 @@
   guiApplications = with pkgs; [
     anki-bin
     docker
-    karabiner-elements
     obsidian
   ];
   broken = with pkgs; [
