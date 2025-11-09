@@ -1,6 +1,6 @@
 {pkgs}: {
   editors = with pkgs; [neovim vim];
-  languages = with pkgs; [rustup rustc go lua zig 
+  languages = with pkgs; [rustup  go lua 
     (python3.withPackages (pypkgs: [
       pypkgs.beancount
       pypkgs.ipython
@@ -20,7 +20,6 @@
     fzf
     oh-my-zsh
     delta
-    colima
     lazydocker
   ];
   guiApplications = with pkgs; [

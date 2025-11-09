@@ -15,7 +15,7 @@
     nix-darwin,
     home-manager,
   }: let
-    system = "aarch64-darwin";
+    system = "x86_64-darwin";
     pkgs = import nixpkgs {
       inherit system;
       config.allowUnfree = true;
@@ -24,7 +24,7 @@
     packages = import ./packages.nix {inherit pkgs;};
 
     darwinConfig = {...}: {
-      system.primaryUser = "mikolaj";
+      system.primaryUser = "mikolajkozakiewicz";
       nix.gc.automatic = true;
       nix.gc.options = "--delete-older-than 7d";
       nix.optimise.automatic = true;
@@ -32,9 +32,9 @@
       nixpkgs.hostPlatform = system;
       system.configurationRevision = self.rev or self.dirtyRev or null;
       system.stateVersion = 6;
-      users.users.mikolaj = {
-        name = "mikolaj";
-        home = "/Users/mikolaj";
+      users.users.mikolajkozakiewicz = {
+        name = "mikolajkozakiewicz";
+        home = "/Users/mikolajkozakiewicz";
       };
       environment.shells = with pkgs; [zsh];
       programs.zsh.enable = true;
@@ -50,7 +50,7 @@
       home-manager.backupFileExtension = "backup";
       home-manager.useGlobalPkgs = true;
       home-manager.useUserPackages = true;
-      home-manager.users.mikolaj = import ./home.nix {
+      home-manager.users.mikolajkozakiewicz = import ./home.nix {
         inherit pkgs;
       };
     };
