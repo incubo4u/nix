@@ -3,7 +3,6 @@
     "com.apple.dock" = {
       autohide-delay = 0.0;
       show-recents = false;
-      static-only = true;
       autohide = true;
       launchanim = false;
       orientation = "bottom";

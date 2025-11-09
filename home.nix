@@ -141,8 +141,6 @@ in {
     packages.editors
     packages.languages
     packages.networkingTools
-    packages.macOsUtils
     packages.guiApplications
-    # packages.broken
   ];
 }
