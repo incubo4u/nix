@@ -12,9 +12,10 @@ in {
   };
   home.shell.enableZshIntegration = true;
   programs.home-manager.enable = true;
+  
   programs.git = {
     enable = true;
-    extraConfig = {
+    settings = {
       core.pager = "delta";
       interactive.diffFilter = "delta --color-only";
       delta.navigate = true;
@@ -112,7 +113,7 @@ in {
       nixrb = "sudo darwin-rebuild switch --flake .#incubo";
       update = "nix flake update --flake .#incubo && brew update";
     };
-    initExtra = ''
+    initContent = ''
       set -o vi
       if [[ -n "$SSH_CONNECTION" ]]; then
         export EDITOR='vim'
