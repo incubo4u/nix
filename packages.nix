@@ -7,7 +7,6 @@
     ]))
   ];
   networkingTools = with pkgs; [curl nmap wget];
-  macOsUtils = with pkgs; [];
   systemUtilities = with pkgs; [
     starship
     atuin
@@ -26,10 +25,5 @@
     anki-bin
     docker
     obsidian
-  ];
-  broken = with pkgs; [
-    ghostty
-    keepassxc
-    syncthing
   ];
 }
