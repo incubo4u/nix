@@ -23,6 +23,7 @@
   ];
 
   systemUtilities = with pkgs; [
+    niri
     git
     delta
     ripgrep

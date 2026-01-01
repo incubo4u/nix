@@ -1,7 +1,7 @@
-{ pkgs, ... }:
+{ ... }:
 
 {
-  programs.niri = {
+ programs.niri = {
     enable = true;
 
     settings = {
@@ -15,19 +15,20 @@
         touchpad = {
           tap = true;
           natural-scroll = true;
-
-          # 👇 THIS disables touchpad while typing
-          dwt = true;
+          dwt = true; # disable while typing
         };
       };
 
       binds = {
-        "Alt+h" = { action = "focus-column-left"; };
-        "Alt+l" = { action = "focus-column-right"; };
-        "Alt+j" = { action = "focus-window-down"; };
-        "Alt+k" = { action = "focus-window-up"; };
+        "Alt+h" = "focus-column-left";
+        "Alt+l" = "focus-column-right";
+        "Alt+j" = "focus-window-down";
+        "Alt+k" = "focus-window-up";
 
-        "Alt+Return" = { action = "spawn"; command = [ "ghostty" ]; };
+        "Alt+Return" = {
+          action = "spawn";
+          command = [ "ghostty" ];
+        };
       };
     };
   };
