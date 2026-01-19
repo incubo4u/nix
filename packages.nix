@@ -7,12 +7,10 @@
   ];
 
   languages = with pkgs; [
-    cargo
     go
     lua
     python3
     rustc
-    zig
   ];
 
   networkingTools = with pkgs; [
@@ -23,7 +21,6 @@
   ];
 
   systemUtilities = with pkgs; [
-    niri
     git
     delta
     ripgrep
@@ -34,7 +31,6 @@
     starship
     atuin
     zsh
-    oh-my-zsh
   ];
 
   guiApplications = with pkgs; [

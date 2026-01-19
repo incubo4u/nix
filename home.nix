@@ -10,11 +10,11 @@ in {
   home.sessionVariables = {
     LANG = "en_US.UTF-8";
     EDITOR = "nvim";
+    TERM = "xterm-256color";
   };
 
   programs.home-manager.enable = true;
 
-  #### Shell ####
   programs.zsh = {
     enable = true;
 
@@ -41,7 +41,6 @@ in {
     '';
   };
 
-  #### Git ####
   programs.git = {
     enable = true;
     extraConfig = {
@@ -52,13 +51,11 @@ in {
     };
   };
 
-  #### Tmux ####
   programs.tmux = {
     enable = true;
     mouse = true;
     prefix = "C-a";
     keyMode = "vi";
-    historyLimit = 9999999;
 
     extraConfig = ''
       bind Space split-window -h
@@ -68,10 +65,7 @@ in {
     '';
   };
 
-  #### Prompt ####
   programs.starship.enable = true;
-
-  #### History ####
   programs.atuin = {
     enable = true;
     enableZshIntegration = true;
@@ -81,31 +75,10 @@ in {
   programs.fzf.enable = true;
   programs.carapace.enable = true;
 
-home.file = {
-  ".config/niri/config.toml" = {
-    text = ''
-      [input]
-      keyboard = "caps:escape"
-      touchpad = "tap=true, natural-scroll=true, dwt=true"
-
-      [binds]
-      "Alt+h" = "focus-column-left"
-      "Alt+l" = "focus-column-right"
-      "Alt+j" = "focus-window-down"
-      "Alt+k" = "focus-window-up"
-      "Alt+Return" = { action = "spawn", command = "ghostty" }
-    '';
-  };
-};
-
- 
-  #### Syncthing (user service) ####
   services.syncthing = {
     enable = true;
   };
 
-
-  #### Packages ####
   home.packages = builtins.concatLists [
     packages.systemUtilities
     packages.editors

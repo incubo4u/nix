@@ -1,6 +1,4 @@
 {
-  description = "principe linux home-manager config";
-
   inputs = {
     nixpkgs.url = "github:NixOS/nixpkgs/nixpkgs-unstable";
 
