@@ -40,7 +40,6 @@
       programs.zsh.enable = true;
 
       environment.systemPackages = builtins.concatLists [
-        packages.macOsUtils
         packages.guiApplications
       ];
       imports = [
