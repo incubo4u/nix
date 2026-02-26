@@ -43,6 +43,9 @@ in {
         alt-shift-f = "move-node-to-workspace F";
         alt-shift-g = "move-node-to-workspace G";
 
+        alt-shift-h = "move-node-to-monitor --wrap-around prev";
+        alt-shift-l = "move-node-to-monitor --wrap-around next";
+
         alt-tab = "workspace-back-and-forth";
 
         alt-minus = "resize smart -50";
@@ -110,8 +113,8 @@ in {
       gd = "git diff";
       gds = "git diff --staged";
       gt = "git log --graph --oneline --decorate";
-      nixrb = "sudo darwin-rebuild switch --flake .#incubo";
-      update = "nix flake update --flake .#incubo && brew update";
+      nixrb = "sudo darwin-rebuild switch --flake ~/.config/nix#incubo";
+      update = "nix flake update ~/.config/nix && brew update";
     };
     initContent = ''
       set -o vi
