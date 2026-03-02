@@ -24,7 +24,7 @@ in {
   };
   programs.aerospace = {
     enable = true;
-    userSettings = {
+    settings = {
       mode.main.binding = {
         alt-h = "focus left";
         alt-j = "focus down";

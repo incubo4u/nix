@@ -25,6 +25,5 @@
     anki-bin
     docker
     obsidian
-    finetune
   ];
 }

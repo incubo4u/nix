@@ -12,6 +12,7 @@
       "keepassxc"
       "notunes"
       "syncthing"
+      "finetune"
     ];
     masApps = {
     };
