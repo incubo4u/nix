@@ -7,7 +7,6 @@
       "arc"
       "NetNewsWire"
       "ghostty"
-      "google-chrome"
       "homerow"
       "keepassxc"
       "notunes"

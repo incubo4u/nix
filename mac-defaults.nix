@@ -7,11 +7,6 @@
       launchanim = false;
       orientation = "bottom";
       tilesize = 36;
-      # persistent-apps = [
-      #   "/Applications/Arc.app"
-      #   "/Applications/Signal.app"
-      #   "/Applications/Ghostty.app"
-      # ];
     };
     #disable apple inteligence
     "com.apple.CloudSubscriptionFeatures.optIn" = {

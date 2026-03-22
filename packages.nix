@@ -2,7 +2,6 @@
   editors = with pkgs; [neovim vim];
   languages = with pkgs; [rustup  go lua zig 
     (python3.withPackages (pypkgs: [
-      pypkgs.beancount
       pypkgs.ipython
     ]))
   ];
@@ -19,11 +18,9 @@
     fzf
     oh-my-zsh
     delta
-    lazydocker
   ];
   guiApplications = with pkgs; [
     anki-bin
-    docker
     obsidian
   ];
 }
