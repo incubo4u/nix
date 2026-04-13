@@ -7,6 +7,7 @@
   ];
   networkingTools = with pkgs; [curl nmap wget];
   systemUtilities = with pkgs; [
+    rclone
     starship
     atuin
     bat

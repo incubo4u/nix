@@ -4,6 +4,7 @@
     taps = [];
     brews = [];
     casks = [
+      "kopiaui"
       "arc"
       "NetNewsWire"
       "ghostty"
