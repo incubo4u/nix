@@ -1,6 +1,6 @@
 {pkgs}: {
   editors = with pkgs; [neovim vim];
-  languages = with pkgs; [rustup  go lua zig 
+  languages = with pkgs; [openjdk rustup  go lua zig 
     (python3.withPackages (pypkgs: [
       pypkgs.ipython
     ]))

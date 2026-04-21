@@ -120,6 +120,9 @@ in {
       update = "nix flake update ~/.config/nix && brew update";
     };
     initContent = ''
+      if [ -x /opt/homebrew/bin/brew ]; then
+        eval "$(/opt/homebrew/bin/brew shellenv)"
+      fi
       set -o vi
       if [[ -n "$SSH_CONNECTION" ]]; then
         export EDITOR='vim'

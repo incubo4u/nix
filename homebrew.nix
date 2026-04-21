@@ -4,6 +4,8 @@
     taps = [];
     brews = [];
     casks = [
+      "openmtp"
+      "android-commandlinetools"
       "kopiaui"
       "arc"
       "NetNewsWire"
