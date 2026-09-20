@@ -11,6 +11,7 @@
     starship
     atuin
     bat
+    jujutsu
     git
     ripgrep
     tmux

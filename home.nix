@@ -141,6 +141,7 @@ in {
   programs.fzf = {
     enable = true;
     enableZshIntegration = true;
+    historyWidget.zsh.command = "";
   };
   imports = [
     ./mac-defaults.nix

@@ -7,13 +7,13 @@
       "openmtp"
       "android-commandlinetools"
       "kopiaui"
-      "arc"
+      # "helium-browser"
       "NetNewsWire"
       "ghostty"
       "homerow"
       "keepassxc"
       "notunes"
-      "syncthing"
+      "syncthing-app"
       "finetune"
     ];
     masApps = {
